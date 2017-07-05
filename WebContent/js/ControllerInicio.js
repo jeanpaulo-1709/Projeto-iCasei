@@ -16,7 +16,26 @@ app.controller('ControllerInicio', function($scope, $http) {
 			    //Adiciona os vídeos no array.
 		    	for(var i=0; i<response.data.items.length;i++)
 		    	$scope.videos.push(response.data.items[i]);
-		        $scope.nextPage = response.data.nextPageToken;
+		    	$scope.nextPage = response.data.nextPageToken;
+		    	$scope.prevPage = response.data.prevPageToken;
+		        $scope.resultOk = true;
+		        
+		        if(response.data.nextPageToken != null){	    	
+		    		$scope.resultProxPage = true;
+		    		console.log("Prox Page = "+$scope.resultProxPage);
+		    	}else{
+		    		 $scope.resultProxPage = false;
+		    		 console.log("Prox Page = "+$scope.resultProxPage);
+		    	}
+		    	
+		    	if(response.data.prevPageToken != null){	    	
+		    		$scope.resultPrevPage = true;
+		    		console.log("Prev Page = "+$scope.resultPrevPage);
+		    	}else{
+		    		 $scope.resultPrevPage = false;
+		    		 console.log("Prev Page = "+$scope.resultPrevPage);
+		    	}
+		        
 		    });
 		
 		
@@ -37,6 +56,23 @@ app.controller('ControllerInicio', function($scope, $http) {
 		    	$scope.videos.push(response.data.items[i]);
 		    	$scope.nextPage = response.data.nextPageToken;
 		    	$scope.prevPage = response.data.prevPageToken;
+		    	
+		    	if(response.data.nextPageToken != null){	    	
+		    		$scope.resultProxPage = true;
+		    		console.log("Prox Page = "+$scope.resultProxPage);
+		    	}else{
+		    		 $scope.resultProxPage = false;
+		    		 console.log("Prox Page = "+$scope.resultProxPage);
+		    	}
+		    	
+		    	if(response.data.prevPageToken != null){	    	
+		    		$scope.resultPrevPage = true;
+		    		console.log("Prev Page = "+$scope.resultPrevPage);
+		    	}else{
+		    		 $scope.resultPrevPage = false;
+		    		 console.log("Prev Page = "+$scope.resultPrevPage);
+		    	}
+		    	
 		    });
 		
 		
@@ -57,6 +93,23 @@ app.controller('ControllerInicio', function($scope, $http) {
 		    	$scope.videos.push(response.data.items[i]);
 		    	$scope.nextPage = response.data.nextPageToken;
 		    	$scope.prevPage = response.data.prevPageToken;
+		    	
+		    	if(response.data.nextPageToken != null){	    	
+		    		$scope.resultProxPage = true;
+		    		console.log("Prox Page = "+$scope.resultProxPage);
+		    	}else{
+		    		 $scope.resultProxPage = false;
+		    		 console.log("Prox Page = "+$scope.resultProxPage);
+		    	}
+		    	
+		    	if(response.data.prevPageToken != null){	    	
+		    		$scope.resultPrevPage = true;
+		    		console.log("Prev Page = "+$scope.resultPrevPage);
+		    	}else{
+		    		 $scope.resultPrevPage = false;
+		    		 console.log("Prev Page = "+$scope.resultPrevPage);
+		    	}
+		    	
 		    });
 		
 		
@@ -67,4 +120,9 @@ app.controller('ControllerInicio', function($scope, $http) {
     $scope.conteudo = {};
     $scope.nextPage;
     $scope.prevPage;
+    $scope.resultOk = false;
+    $scope.resultNextPage;
+    $scope.resultPrevPage;
+    
 });
+
