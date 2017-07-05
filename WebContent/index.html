@@ -1,0 +1,122 @@
+<html ng-app="appInicio">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Teste iCasei: Front-End Pleno</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script type="text/javascript" src="js/ControllerInicio.js"></script>
+
+    <title>Projeto iCasei - Pleno</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tema CSS -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+</head>
+
+<body ng-controller="ControllerInicio">
+    <!-- Navegação -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                    <a class="navbar-brand">Projeto iCasei - Pleno</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container" id="maincontent" tabindex="-1">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <h1 class="name">Faça sua pesquisa!</h1>
+                        <form id="busca">
+     						 <input type="text" class="form-control" id="input-pesquisa" placeholder="Pesquisar" ng-model="busca.conteudo" required="required"></input>
+      						 <button type="submit" class="btn default" id="submit-pesquisar" ng-disabled="busca.conteudo == null" ng-click="submitPesquisa()">Buscar</button>
+  						</form>
+                        <hr class="star-light">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sessão Resultado da Pesquisa -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Resultado da pesquisa :D</h2>
+  						
+                    <hr class="star-primary">
+                </div>
+            </div>
+            
+            <div class="row" >
+               <div class="row" >
+  					<div ng-repeat="video in videos">
+    					<div class="thumbnail">
+      					<img ng-src="{{video.snippet.thumbnails.high.url}}">
+      						<div class="caption">
+       							<h3>{{video.snippet.title}}</h3>
+        						<p>{{video.snippet.description}}</p>
+        						<p><a href="#" class="btn btn-primary" role="button">Detalhes</a></p>
+      						</div>
+    					</div>
+  					</div>
+				</div>
+            </div>
+            
+           	<button ng-show="$scope.prevPage == true" type="submit" class="btn">Página Anterior</button>
+            <button ng-show="$scope.nextPage == true" type="submit" class="btn">Próxima Página</button> 
+    </section>
+
+      <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright Jean Paulo 2017
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    
+    
+    <!-- Controlador da Página -->
+    <script type="text/javascript" src="js/ControllerInicio.js"></script>
+    
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/freelancer.min.js"></script>
+    
+    
+</body>
+</html>
