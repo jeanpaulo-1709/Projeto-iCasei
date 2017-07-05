@@ -44,6 +44,8 @@
                     </div>
                 </div>
             </div>
+          
+            
         </div>
     </header>
 
@@ -57,8 +59,8 @@
                     <hr class="star-primary">
                 </div>
             </div>
-            
-            <div class="row" >
+
+			<div class="row" >
                <div class="row" >
   					<div ng-repeat="video in videos">
     					<div class="thumbnail">
@@ -73,11 +75,14 @@
 				</div>
             </div>
             
-           	<button ng-show="$scope.prevPage == true" type="submit" class="btn">Página Anterior</button>
-            <button ng-show="$scope.nextPage == true" type="submit" class="btn">Próxima Página</button> 
     </section>
-
-      <!-- Footer -->
+    
+    <div  class="text-center">
+    	<button type="submit" ng-click="submitPrevPage()" >Página Anterior</button>
+    	<button type="submit" ng-click="submitNextPage()" >Próxima Página</button>
+    </div>
+    
+    <!-- Rodapé -->
     <footer class="text-center">
         <div class="footer-below">
             <div class="container">
@@ -90,15 +95,6 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
-        <a class="btn btn-primary" href="#page-top">
-            <i class="fa fa-chevron-up"></i>
-        </a>
-    </div>
-
-    
-    
     <!-- Controlador da Página -->
     <script type="text/javascript" src="js/ControllerInicio.js"></script>
     
