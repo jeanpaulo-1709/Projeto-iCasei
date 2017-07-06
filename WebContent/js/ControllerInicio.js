@@ -1,8 +1,19 @@
-var app = angular.module('appInicio', []);
+var app = angular.module('appInicio',[]);
+
+/*app.config(function($routeProvider) {
+    $routeProvider.when('/detalhes/:videoId',
+{
+      templateUrl: "/detalhes.html",
+      controller: "ControllerDetalhes"
+      })
+    .otherwise({redirect:'/'})
+    ;
+});
+*/
 
 app.controller('ControllerInicio', function($scope, $http) {
 	var key = 'AIzaSyCkhDgkyPJJSYCY6Z7U2jQCA0lbMVEV6E8'
-
+		
 	//Método responsável por fazer a requisição HTTP, passando como parâmetro a String da pesquisa.	
 	$scope.submitPesquisa = function() {
 				
@@ -22,18 +33,14 @@ app.controller('ControllerInicio', function($scope, $http) {
 		        
 		        if(response.data.nextPageToken != null){	    	
 		    		$scope.resultProxPage = true;
-		    		console.log("Prox Page = "+$scope.resultProxPage);
 		    	}else{
 		    		 $scope.resultProxPage = false;
-		    		 console.log("Prox Page = "+$scope.resultProxPage);
 		    	}
 		    	
 		    	if(response.data.prevPageToken != null){	    	
 		    		$scope.resultPrevPage = true;
-		    		console.log("Prev Page = "+$scope.resultPrevPage);
 		    	}else{
 		    		 $scope.resultPrevPage = false;
-		    		 console.log("Prev Page = "+$scope.resultPrevPage);
 		    	}
 		        
 		    });
@@ -59,18 +66,14 @@ app.controller('ControllerInicio', function($scope, $http) {
 		    	
 		    	if(response.data.nextPageToken != null){	    	
 		    		$scope.resultProxPage = true;
-		    		console.log("Prox Page = "+$scope.resultProxPage);
 		    	}else{
 		    		 $scope.resultProxPage = false;
-		    		 console.log("Prox Page = "+$scope.resultProxPage);
 		    	}
 		    	
 		    	if(response.data.prevPageToken != null){	    	
 		    		$scope.resultPrevPage = true;
-		    		console.log("Prev Page = "+$scope.resultPrevPage);
 		    	}else{
 		    		 $scope.resultPrevPage = false;
-		    		 console.log("Prev Page = "+$scope.resultPrevPage);
 		    	}
 		    	
 		    });
@@ -96,25 +99,38 @@ app.controller('ControllerInicio', function($scope, $http) {
 		    	
 		    	if(response.data.nextPageToken != null){	    	
 		    		$scope.resultProxPage = true;
-		    		console.log("Prox Page = "+$scope.resultProxPage);
 		    	}else{
 		    		 $scope.resultProxPage = false;
-		    		 console.log("Prox Page = "+$scope.resultProxPage);
 		    	}
 		    	
 		    	if(response.data.prevPageToken != null){	    	
 		    		$scope.resultPrevPage = true;
-		    		console.log("Prev Page = "+$scope.resultPrevPage);
 		    	}else{
 		    		 $scope.resultPrevPage = false;
-		    		 console.log("Prev Page = "+$scope.resultPrevPage);
 		    	}
 		    	
 		    });
 		
 		
 	 }
-    
+	
+	
+	$scope.submitDetalhe = function() {
+		
+		 $http.get('https://www.googleapis.com/youtube/v3/videos?id='+$scope.videoid+'&part=snippet,statistics&key='+key)
+		    .then(function(response) {
+		    	
+		    	
+		    	$scope.embed.push(response.data.items[0]);
+		    	console.log(embed);
+		        
+		    });
+		
+		
+	 }
+	
+	
+	$scope.embed = [];
     $scope.videos = [];
     $scope.busca = {};
     $scope.conteudo = {};
