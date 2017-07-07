@@ -19,8 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	<!-- AngularJS e Controller -->
-	<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-	<script type="text/javascript" src="js/ControllerInicio.js"></script>
+    <script src="https://code.angularjs.org/1.0.8/angular.js" data-require="angular.js@1.0.x" data-semver="1.0.8"></script>
+    <script src="js/ControllerDetalhes.js"></script>
 
 </head>
 
@@ -50,20 +50,24 @@
 								<div class="row">
 									<div>
 										<div class="thumbnail">
-											<div class="caption">
-												<h3>{{title}}</h3>
-												<iframe width="420" height="415" class="img-responsive"
-													src="https://www.youtube.com/embed/{{videoId}}">
-												</iframe>
-												<p>{{description}}</p>
-												<p>{{viewCount}}</p>
+											<div class="caption" ng-repeat="video in videos">
+												
+												<iframe class="img-responsive" ng-src="https://www.youtube.com/embed/{{video.url | GetYouTubeID}}" frameborder="0" allowfullscreen></iframe>
+												
+												<div>
+										            <h1>{{title}}</h1>
+										            <p>{{description}}</p>
+										            <h3>{{visualizacoes}} Visualizações<h3>
+										        </div>
+										        <a class="btn btn-default" href="/Projeto-iCasei/#">Voltar</a>
+										    </div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-                    </div>
-                </div>
+					 </div>
+                  </div>
+               </div>
             </div>
         </div>
     </header>

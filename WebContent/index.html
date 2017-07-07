@@ -21,7 +21,8 @@
 	<!-- AngularJS e Controller -->
 	<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	<script type="text/javascript" src="js/ControllerInicio.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/ControllerDetalhes.js"></script>
+	
 
 </head>
 
@@ -49,8 +50,10 @@
 							<input type="text" class="form-control" id="input-pesquisa"
 								placeholder="Pesquisar" ng-model="busca.conteudo"
 								required="required"></input>
-							<button type="submit" class="btn default" id="submit-pesquisar"
+						<a href="#section42">	 <button type="submit" class="btn default" id="submit-pesquisar"
 								ng-disabled="busca.conteudo == null" ng-click="submitPesquisa()">Buscar</button>
+								</a>  
+							
 						</form>
                         <hr class="star-light">
                     </div>
@@ -60,15 +63,17 @@
     </header>
 
   <!-- Sessão Resultado da Pesquisa -->
+  <div id="section42" class="container-fluid"></div>
 	<section ng-hide="resultOk == false">
-		<div class="container">
+		<div class="container text-center">
+		
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2>Resultado da pesquisa :D</h2>
+					<h2 >Resultado da pesquisa :D</h2>
 					<hr class="star-primary">
 				</div>
 			</div>
-
+			
 			<div class="row">
 				<div class="row">
 					<div ng-repeat="video in videos">
@@ -77,12 +82,7 @@
 							<div class="caption">
 								<h3>{{video.snippet.title}}</h3>
 								<p>{{video.snippet.description}}</p>
-							
-							<form id="embed"">
-								<input type="text" ng-model="embed" value="{{videos.id.videoId}}"/>
-								<button type="submit" class="btn default" id="submit-detalhe" ng-click="submitDetalhe()">detalhe</button>	
-							</form>
-										
+								<a class="btn btn-default" href="detalhes.html?id={{video.id.videoId}}">Detalhes</a>
 							</div>
 						</div>
 						
@@ -95,7 +95,6 @@
 				<button type="submit" ng-disabled="resultNextPage == false" ng-click="submitNextPage()">Próxima	Página</button>
 			</div>
 			
-			
 			<!-- Modal -->
 			<div class="modal fade" id="myModal" role="dialog">
 			   <div class="modal-dialog">
@@ -103,10 +102,8 @@
 		   				
 				 </div>
 			</div>
-			
-			
 	</section>
-
+<div class='cover'><div class='rightSection'></div></div>
     <!-- Rodapé -->
 	<footer class="text-center">
         <div class="footer-above">
@@ -149,13 +146,6 @@
         </div>
     </footer>
     
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
-        <a class="btn btn-primary" href="#page-top">
-            <i class="fa fa-chevron-up"></i>
-        </a>
-    </div>
-
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
 

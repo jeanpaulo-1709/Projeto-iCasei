@@ -1,16 +1,5 @@
 var app = angular.module('appInicio',[]);
 
-/*app.config(function($routeProvider) {
-    $routeProvider.when('/detalhes/:videoId',
-{
-      templateUrl: "/detalhes.html",
-      controller: "ControllerDetalhes"
-      })
-    .otherwise({redirect:'/'})
-    ;
-});
-*/
-
 app.controller('ControllerInicio', function($scope, $http) {
 	var key = 'AIzaSyCkhDgkyPJJSYCY6Z7U2jQCA0lbMVEV6E8'
 		
@@ -25,8 +14,11 @@ app.controller('ControllerInicio', function($scope, $http) {
 			    $scope.videos.splice(i)
 			    
 			    //Adiciona os vídeos no array.
-		    	for(var i=0; i<response.data.items.length;i++)
+			    //Verifica se é video ou canal, só adiciona se for video.
+		    	for(var i=0; i<response.data.items.length;i++){
+		    	if(response.data.items[i].id.kind != "youtube#channel")	
 		    	$scope.videos.push(response.data.items[i]);
+		    	}
 		    	$scope.nextPage = response.data.nextPageToken;
 		    	$scope.prevPage = response.data.prevPageToken;
 		        $scope.resultOk = true;
@@ -42,7 +34,7 @@ app.controller('ControllerInicio', function($scope, $http) {
 		    	}else{
 		    		 $scope.resultPrevPage = false;
 		    	}
-		        
+		    	
 		    });
 		
 		
@@ -58,9 +50,12 @@ app.controller('ControllerInicio', function($scope, $http) {
 		    	for(var i=0; i<$scope.videos.length;i++) 
 		    	$scope.videos.splice(i)
 		    	
-		    	//Adiciona os vídeos no array e atualiza variáveis next e preview page
-		    	for(var i=0; i<response.data.items.length;i++)
-		    	$scope.videos.push(response.data.items[i]);
+		    	//Adiciona os vídeos no array e atualiza variáveis next e preview page.
+		    	//Verifica se é video ou canal, só adiciona se for video.
+		    	for(var i=0; i<response.data.items.length;i++){
+			    	if(response.data.items[i].id.kind != "youtube#channel")	
+			    	$scope.videos.push(response.data.items[i]);
+			    	}
 		    	$scope.nextPage = response.data.nextPageToken;
 		    	$scope.prevPage = response.data.prevPageToken;
 		    	
@@ -77,8 +72,6 @@ app.controller('ControllerInicio', function($scope, $http) {
 		    	}
 		    	
 		    });
-		
-		
 	 }
 	
 	$scope.submitPrevPage = function() {
@@ -92,8 +85,12 @@ app.controller('ControllerInicio', function($scope, $http) {
 			    	$scope.videos.splice(i)
 			    
 			    //Adiciona os vídeos no array e atualiza variáveis next e preview page
-		    	for(var i=0; i<response.data.items.length;i++)
-		    	$scope.videos.push(response.data.items[i]);
+			    //Verifica se é video ou canal, só adiciona se for video.
+			    for(var i=0; i<response.data.items.length;i++){
+			    	if(response.data.items[i].id.kind != "youtube#channel")	
+			    	$scope.videos.push(response.data.items[i]);
+				}
+		    	
 		    	$scope.nextPage = response.data.nextPageToken;
 		    	$scope.prevPage = response.data.prevPageToken;
 		    	
@@ -108,29 +105,10 @@ app.controller('ControllerInicio', function($scope, $http) {
 		    	}else{
 		    		 $scope.resultPrevPage = false;
 		    	}
-		    	
 		    });
-		
-		
 	 }
 	
 	
-	$scope.submitDetalhe = function() {
-		
-		 $http.get('https://www.googleapis.com/youtube/v3/videos?id='+$scope.videoid+'&part=snippet,statistics&key='+key)
-		    .then(function(response) {
-		    	
-		    	
-		    	$scope.embed.push(response.data.items[0]);
-		    	console.log(embed);
-		        
-		    });
-		
-		
-	 }
-	
-	
-	$scope.embed = [];
     $scope.videos = [];
     $scope.busca = {};
     $scope.conteudo = {};
