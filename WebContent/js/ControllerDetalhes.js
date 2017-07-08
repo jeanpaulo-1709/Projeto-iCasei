@@ -6,11 +6,15 @@ app.controller('ControllerDetalhes', function($scope,$location,$http,$rootScope)
 var query = location.search.slice(1);
 var partes = query.split('&');
 var videoId = {};
+
 partes.forEach(function (parte) {
 var chaveValor = parte.split('=');
 var chave = chaveValor[0];
 var valor = chaveValor[1];
 var idvideo = valor;
+
+
+console.log(chaveValor[1]); //esse é busca
 
 var key = 'AIzaSyCkhDgkyPJJSYCY6Z7U2jQCA0lbMVEV6E8'
 
