@@ -15,7 +15,8 @@ partes.forEach(function (parte) {
 
  chaveValor = parte.split('=');
  chave = chaveValor[0];
- videoId = chaveValor[1];
+ parametro = chaveValor[1];
+
 
 
 });
@@ -23,7 +24,7 @@ partes.forEach(function (parte) {
 var key = 'AIzaSyCkhDgkyPJJSYCY6Z7U2jQCA0lbMVEV6E8'
 
 	//Método responsável por fazer a requisição HTTP, passando como parâmetro a String da pesquisa.	
-	 $http.get('https://www.googleapis.com/youtube/v3/search?part=id,snippet&q='+videoId+'&key='+key)
+	 $http.get('https://www.googleapis.com/youtube/v3/search?part=id,snippet&q='+parametro+'&key='+key)
 	    .then(function(response) {
 	    	
 	    	//Limpa Array de vídeos para evitar repetições.
@@ -57,7 +58,7 @@ var key = 'AIzaSyCkhDgkyPJJSYCY6Z7U2jQCA0lbMVEV6E8'
 $scope.submitNextPage = function() {
 	
 	//Método responsável por fazer a requisição HTTP, passando como parâmetro a String da pesquisa e Token de Next Page.	
-	 $http.get('https://www.googleapis.com/youtube/v3/search?part=id,snippet&q='+$scope.busca.conteudo+'&pageToken='+$scope.nextPage+'&key='+key)
+	 $http.get('https://www.googleapis.com/youtube/v3/search?part=id,snippet&q='+parametro+'&pageToken='+$scope.nextPage+'&key='+key)
 	    .then(function(response) {
 	    	
 	    	//Limpa Array de vídeos para evitar repetições.
@@ -91,7 +92,7 @@ $scope.submitNextPage = function() {
 $scope.submitPrevPage = function() {
 	
 	//Método responsável por fazer a requisição HTTP, passando como parâmetro a String da pesquisa e Token de Preview Page.	
-	 $http.get('https://www.googleapis.com/youtube/v3/search?part=id,snippet&q='+$scope.busca.conteudo+'&pageToken='+$scope.prevPage+'&key='+key)
+	 $http.get('https://www.googleapis.com/youtube/v3/search?part=id,snippet&q='+parametro+'&pageToken='+$scope.prevPage+'&key='+key)
 	    .then(function(response) {
 
 	    	//Limpa Array de vídeos para evitar repetições.
